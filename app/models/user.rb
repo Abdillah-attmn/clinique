@@ -1,12 +1,15 @@
 class User < ApplicationRecord
-  validates :lastname, presences: true
-  validates :firstname, presences: true, uniqueness: { scope: :lastname }
-  validates :gender, presences: true
-  validates :birth_date, presences: true
-  validates :country, presences: true
-  validates :zipcode, presences: true
-  validates :city, presences: true
-  validates :phone_number, presences: true
+  has_many :posts
+  has_many :forums
+  has_many :applications
+  validates :lastname, presence: true
+  validates :firstname, presence: true, uniqueness: { scope: :lastname }
+  validates :gender, presence: true
+  validates :birth_date, presence: true
+  validates :country, presence: true
+  validates :zipcode, presence: true
+  validates :city, presence: true
+  validates :phone_number, presence: true
   # Include default devise modules. Others available are:
   # :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable,
