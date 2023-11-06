@@ -8,11 +8,7 @@ class User < ApplicationRecord
   belongs_to :profile, polymorphic: true
   validates :firstname, presence: true
   validates :lastname, presence: true, uniqueness: {scope: :firstname}
-  validates :phone_number, format: { with: /^
-                          (?:(?:\+|00)33|0)     # Dialing code
-                          \s?[1-9]              # First number (from 1 to 9)
-                          (?:[\s.-]?\d{2}){4}   # End of the phone number
-                          $/}
+  validates :phone_number, format: { with: /\A(?:(?:\+|00)33|0)\s?[1-9](?:[\s.-]?\d{2}){4}\z/}
 
 
   def role
