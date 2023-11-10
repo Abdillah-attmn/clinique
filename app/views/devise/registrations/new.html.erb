@@ -4,79 +4,76 @@
       <div class= "border rounded col-12 col-sm-10 col-md-8 col-lg-5">
         <div ><h2 class="text-center mb-3">Créer ton compte</h2></div>
 
-        <form action="/users" class="new_user" novalidate="novalidate" accept-charset="UTF-8" method="post">
-          <input type="hidden" name="authenticity_token" value="Dc9TTYXq7QH9Tg6Hmwgmjc4Ro8HEc3Yz3OAYJEYHUmV9AmtReUHw2Ocq7fwyfaezf1FuUbx7A9DxX1L-ilfdVQ" autocomplete="off">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-
-          <label class="switch">
-            <%= check_box_tag :profile_id, value = "true", checked = false, class: "" %>
-            <span class="slider round"></span>
-          </label>
-          <div class="form-inputs ">
-            <div class="row mb-3">
+          <div class="form-inputs">
+            <div class="row mb-2">
               <div class="col-6">
-                <label for="first-name" class="form-label">Prénom</label>
-                <abbr title="required">*</abbr>
-                <input autocomplete="given-name" required="required" aria-required="true" type="text" class="form-control" name="user[firstname]" id="user_firstname">
+                <%= f.label "Prénom" %>
+                <%= f.input :firstname,
+                            label: false,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "given-name", class:"form-control" }%>
               </div>
-
               <div class="col-6">
-                <label for="last-name" class="form-label">Nom</label>
-                <abbr title="required">*</abbr>
-                <input autocomplete="family-name" required="required" aria-required="true" type="text" class="form-control" name="user[lastname]" id="user_lastname">
+                <%= f.label "Nom" %>
+                <%= f.input :lastname,
+                            label: false,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "family-name", class:"form-control" }%>
               </div>
             </div>
-
-              <div class="row mb-3">
-                <div class="col-4">
-                  <label for="your-email" class="form-label">Email</label>
-                  <abbr title="required">*</abbr>
-                </div>
-                <div class="col-8">
-                  <input autocomplete="email" class="form-control string email required" pattern="\S+@\w+\.\w{2,3}" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email">
-                </div>
-              </div>
-
             <div class="row mb-3">
-              <div class="col-4">
-                <label for="password" class="form-label">Mot de passe</label>
-                <abbr title="required">*</abbr>
-              </div>
+              <div class="col-4"><%= f.label "Email" %></div>
               <div class="col-8">
-                <input autocomplete="new-password" class="form-control w-100 password required" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}" required="required" aria-required="true" type="password" name="user[password]" id="user_password">
+                <%= f.input :email,
+                            label: false,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "email", class:"form-control" }%>
               </div>
             </div>
-
             <div class="row mb-3">
-              <div class="col-4">
-                <label for="user_confirmation_du_mot_de_passe" class="form-label">Confirmation du mot de passe</label>
-                <%# <abbr title="required">*</abbr> %>
-              </div>
+              <div class="col-4"><%= f.label "Mot de passe" %></div>
               <div class="col-8">
-                <input autocomplete="new-password" class="form-control password required" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+                <%= f.input :password,
+                            label: false,
+                            required: true,
+                            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                            input_html: { autocomplete: "new-password", class:"form-control" } %>
               </div>
             </div>
-
-            <div class="row pb-2">
-              <div class="col-4">
-                <label class="tel optional form-label" for="user_Téléphone">Téléphone</label>
-                <abbr title="required">*</abbr>
-              </div>
+            <div class="row mb-3">
+              <div class="col-4"><%= f.label "Confirmation du mot de passe" %></div>
               <div class="col-8">
-                <div class="input tel required user_phone_number">
-                  <input autocomplete="tel-national" class="form-control string tel required" required="required" aria-required="true" type="tel" name="user[phone_number]" id="user_phone_number">
-                </div>
+                <%= f.input :password_confirmation,
+                            label: false,
+                            required: true,
+                            input_html: { autocomplete: "new-password", class:"form-control" } %>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4"><%= f.label "Téléphone" %></div>
+              <div class="col-8">
+                <%= f.input :phone_number,
+                            label: false,
+                            required: true,
+                            autofocus: true,
+                            input_html: { autocomplete: "tel_national", class:"form-control" }%>
               </div>
             </div>
           </div>
 
           <div class="form-actions">
-            <div class="col-6 mb-3">
-              <input type="submit" value="S'inscrire" class=" btn btn-clr w-100" data-diasble-with="Sign up">
-            </div>
+            <%= f.button :submit, "Sign up", class:"btn btn-clr col-4"%>
           </div>
+        <% end %>
+
         <%= render "devise/shared/links" %>
-        </form>
+
       </div>
     </div>
 

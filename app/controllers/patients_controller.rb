@@ -6,27 +6,28 @@ class PatientsController < ApplicationController
 
   def new
     @patient = Patient.new
+    @patient.build_user
   end
 
   # POST /patients
   def create
-    @user = current_user
-    @user.profile = Patient.new(patient_params)
-    @patient = @user.profile
+    @patient = Patient.new(patient_params)
     if @patient.save!
-      redirect_to patient_path(@patient)
+      redirect_to patient_path(@patient), notice: 'Patient was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   # GET /patients/:id/edit
-  def edit; end
+  def edit
+    @patient.user || @patient.build_user
+  end
 
   # PATCH /patients/:id
   def update
     if @patient.update!(patient_params)
-      redirect_to_patient_path(@patient)
+      redirect_to patient_path(@patient), notice: 'Patient was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

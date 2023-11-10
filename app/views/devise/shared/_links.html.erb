@@ -26,7 +26,7 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn border" do %>
+    <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn border" do %>
       <span style="color: rgb(200,0,15)" ><span class="fa fa-google"></span> Se connecter avec Google</span>
     <% end %><br />
   <% end %>
