@@ -1,8 +1,8 @@
 <div class="bg-white">
   <div class="container p-3">
     <div class="row justify-content-center">
-      <div class= "border rounded col-12 col-sm-10 col-md-8 col-lg-5">
-        <div ><h2 class="text-center mb-3">Créer ton compte</h2></div>
+      <div class="border rounded col-12 col-sm-10 col-md-8 col-lg-5">
+        <h2 class="text-center mb-3">Créer son compte</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -10,23 +10,21 @@
           <div class="form-inputs">
             <div class="row mb-2">
               <div class="col-6">
-                <%= f.label "Prénom" %>
                 <%= f.input :firstname,
-                            label: false,
+                            label: "Prénom",
                             required: true,
                             autofocus: true,
                             input_html: { autocomplete: "given-name", class:"form-control" }%>
               </div>
               <div class="col-6">
-                <%= f.label "Nom" %>
                 <%= f.input :lastname,
-                            label: false,
+                            label: "Nom",
                             required: true,
                             autofocus: true,
                             input_html: { autocomplete: "family-name", class:"form-control" }%>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-4"><%= f.label "Email" %></div>
               <div class="col-8">
                 <%= f.input :email,
@@ -36,7 +34,7 @@
                             input_html: { autocomplete: "email", class:"form-control" }%>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-4"><%= f.label "Mot de passe" %></div>
               <div class="col-8">
                 <%= f.input :password,
@@ -46,8 +44,8 @@
                             input_html: { autocomplete: "new-password", class:"form-control" } %>
               </div>
             </div>
-            <div class="row mb-3">
-              <div class="col-4"><%= f.label "Confirmation du mot de passe" %></div>
+            <div class="row mb-2">
+              <div class="col-4"><%= f.label "Confirmation du Mot de passe" %></div>
               <div class="col-8">
                 <%= f.input :password_confirmation,
                             label: false,
@@ -55,20 +53,30 @@
                             input_html: { autocomplete: "new-password", class:"form-control" } %>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-4"><%= f.label "Téléphone" %></div>
               <div class="col-8">
                 <%= f.input :phone_number,
                             label: false,
                             required: true,
                             autofocus: true,
-                            input_html: { autocomplete: "tel_national", class:"form-control" }%>
+                            input_html: { autocomplete: "tel", class:"form-control" }%>
               </div>
             </div>
+
           </div>
 
+          <!--div class="form-group">
+            <%= f.label :profile_type, "Patient" %>
+            <label class="switch">
+              <%= f.check_box :profile_type, data: { controller: "profile", profile_user_id: @user.id } %>
+              <span class="slider round" data-target="profile.slider"></span>
+            </label>
+            <%= f.label "Doctor" %>
+          </div-->
+
           <div class="form-actions">
-            <%= f.button :submit, "Sign up", class:"btn btn-clr col-4"%>
+            <%= f.button :submit, "Sign up", class:"btn btn-clr" %>
           </div>
         <% end %>
 
@@ -76,7 +84,5 @@
 
       </div>
     </div>
-
-
   </div>
 </div>

@@ -13,7 +13,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     if @patient.save!
-      redirect_to patient_path(@patient), notice: 'Patient was successfully created.'
+      redirect_to patient_path(@patient), notice: 'Le compte patient a bien été créé.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class PatientsController < ApplicationController
   # PATCH /patients/:id
   def update
     if @patient.update!(patient_params)
-      redirect_to patient_path(@patient), notice: 'Patient was successfully updated.'
+      redirect_to patient_path(@patient), notice: 'Le compte patient a bien été mis à jour.'
     else
       render :edit, status: :unprocessable_entity
     end

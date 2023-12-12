@@ -2,8 +2,22 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: $primary1;
 }
+
+.navbar-lewagon.clr {
+  background-color: $primary1;
+}
+
+/* Set the background color for doctors */
+[data-profile-type="Doctor"] .navbar-lewagon.clr {
+  background-color: $doctor;
+}
+
+/* Set the background color for patients */
+[data-profile-type="Patient"] .navbar-lewagon.clr {
+  background-color: $patient;
+}
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;

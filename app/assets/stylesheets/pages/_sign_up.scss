@@ -1,8 +1,46 @@
 @import "../config/colors";
 
+/* Set the background color as default */
 .btn-clr {
   background-color: $primary1;
   color: $white;
+}
+
+.btn-light-clr{
+  border-color: $primary1;
+  color: $primary1;
+}
+
+.col-12.col-sm-10.col-md-8.col-lg-5 {
+  color: $primary1;
+}
+
+/* Set the background color for doctors */
+[data-profile-type="Doctor"] .btn-clr {
+  background-color: $doctor;
+}
+
+[data-profile-type="Doctor"] .btn-light-clr {
+  border-color: $doctor;
+  color: $doctor;
+}
+
+[data-profile-type="Doctor"] .col-12.col-sm-10.col-md-8.col-lg-5 {
+  color: $doctor;
+}
+
+/* Set the background color for patients */
+[data-profile-type="Patient"] .btn-clr {
+  background-color: $patient;
+}
+
+[data-profile-type="Patient"] .btn-light-clr {
+  border-color: $patient;
+  color: $patient;
+}
+
+[data-profile-type="Patient"] .col-12.col-sm-10.col-md-8.col-lg-5 {
+  color: $patient;
 }
 
 .form-control:focus {
@@ -10,16 +48,12 @@
   box-shadow: 0 0 0 0.25rem rgba(0, 238, 135, 0.25);
 }
 
-.col-12.col-sm-10.col-md-8.col-lg-5{
- color: $primary1;
-}
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
-  width: 30px;
-  height: 17px;
+  width: 33px;
+  height: 19px;
 }
 
 /* Hide default HTML checkbox */
@@ -45,10 +79,10 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
+  height: 18px;
+  width: 18px;
+  left: 1px;
+  bottom: 1px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
