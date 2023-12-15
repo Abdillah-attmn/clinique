@@ -10,16 +10,27 @@ class DoctorsController < ApplicationController
 
   def new
     @doctor = Doctor.new
+    @doctor.build_user
   end
 
   def create
-    @user = current_user
-    @user.profile = Doctor.new(doctor_params)
-    @doctor = @user.profile
+    @doctor = Doctor.new(doctor_params)
     if @doctor.save!
-      redirect_to doctor_path(@doctor)
+      redirect_to doctor_path(@doctor), notice: "Le compte docteur a bien été créé"
     else
-      render :new
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @doctor.user || @doctor.build_user
+  end
+
+  def update
+    if @doctor.update!
+      redirect_to doctor_path(@doctor), notice: "Le compte docteur a bien été mis à jour"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

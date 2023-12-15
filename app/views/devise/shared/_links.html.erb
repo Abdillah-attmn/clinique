@@ -8,15 +8,19 @@
   <% end %><br />
 <% end %>
 
+<div class= "border-bottom row justify-content-center">
+  <div class="col">
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Mot passe oublié?", new_password_path(resource_name) %><br />
+    <% end %>
+  </div>
+</div>
+
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%= link_to "Créer un compte", new_registration_path(resource_name) %><br />
 <% end %>
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Mot passe oublié?", new_password_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' && controller_name != 'registrations'%>
   <%= link_to "Tu n'as pas reçu de mail de confirmation?", new_confirmation_path(resource_name) %><br />
 <% end %>
 
@@ -26,8 +30,8 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn border" do %>
-      <span style="color: rgb(200,0,15)" ><span class="fa fa-google"></span> Se connecter avec Google</span>
+    <%= button_to  omniauth_authorize_path(resource_name, provider), data: { turbo: false },class: "btn border" do%>
+      <span style="color: rgb(200,0,15)"><i class="fa fa-google"></i> Sign in with Google</span>
     <% end %><br />
   <% end %>
 <% end %>

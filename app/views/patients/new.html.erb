@@ -1,0 +1,33 @@
+<div class="bg-white">
+  <div class="container p-3">
+    <div class="row justify-content-center">
+      <div class= "border rounded col-12 col-sm-10 col-md-8 col-lg-5">
+        <h2 class="text-center mb-3"> Finalisation de l'inscription du patient</h2>
+
+        <%= simple_form_for(@doctor, url: doctor_path(@doctor)) do |f| %>
+
+          <div class="form-inputs">
+            <div class="row mb-3">
+              <div class="col-4">
+                <%= f.label "Ta spécialisation" %>
+                <abbr title="required">*</abbr>
+              </div>
+              <div class="col-8">
+                <%= f.inputs  :speciality,
+                              label: false,
+                              required: true,
+                              autofocus: true,
+                              input_html: { class:"form-control" } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class:"btn btn-clr col-4"%>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

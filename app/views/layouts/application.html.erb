@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>Clinique</title>
+    <% if user_signed_in? %>
+      <meta data-profile-type="<%= current_user.profile_type %>" />
+    <% else %>
+      <meta data-profile-type="default" />
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +15,7 @@
     <script src="https://kit.fontawesome.com/45ed2c0af5.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body lang="fr">
     <%= render "shared/navbar" %>
     <%= yield %>
     <%= render "shared/footer" %>
