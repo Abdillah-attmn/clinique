@@ -13,9 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    if sign_up_params[:profilable] == 'Client'
+    if sign_up_params[:profile] == 'Client'
       resource.set_client_profile
-    else
+    elsif sign_up_params[:profile] == 'Doctor'
       resource.set_doctor_profile
     end
 
