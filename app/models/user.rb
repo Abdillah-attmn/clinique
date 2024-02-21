@@ -24,4 +24,8 @@ class User < ApplicationRecord
     d = Doctor.new
     self.profile = d
   end
+
+  def role
+    profile.profile_type.downcase # Returns 'doctor' or 'patient'
+  end
 end
